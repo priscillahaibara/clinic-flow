@@ -1,4 +1,12 @@
 import Link from "next/link";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
+import { Button } from "../ui/button";
 
 const navItems = [
   { href: "#professionals", label: "Professionals" },
@@ -24,6 +32,27 @@ export function Header() {
             </Link>
           ))}
         </nav>
+
+        <Sheet>
+          <SheetTrigger asChild className="md:hidden">
+            <Button size="icon" variant="ghost" aria-label="Open menu">
+              <Menu className="h-6 w-6" />
+            </Button>
+          </SheetTrigger>
+
+          <SheetContent side="right" className="px-6 py-12">
+            {navItems.map((item) => (
+              <SheetClose asChild key={item.href}>
+                <Link
+                  href={item.href}
+                  className="py-2 text-base font-medium text-gray-800"
+                >
+                  {item.label}
+                </Link>
+              </SheetClose>
+            ))}
+          </SheetContent>
+        </Sheet>
       </div>
     </header>
   );
