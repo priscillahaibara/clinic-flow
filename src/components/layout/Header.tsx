@@ -5,7 +5,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import { LogIn, Menu } from "lucide-react";
 import { Button } from "../ui/button";
 
 const navItems = [
@@ -14,6 +14,8 @@ const navItems = [
 ];
 
 export function Header() {
+  const session = null;
+
   return (
     <header className="fixed top-0 z-40 h-16 w-full border-b bg-white/80 backdrop-blur">
       <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -31,6 +33,19 @@ export function Header() {
               {item.label}
             </Link>
           ))}
+
+          <Button asChild>
+            <Link href={session ? "/dashboard" : "/login"}>
+              {session ? (
+                "Dashboard"
+              ) : (
+                <>
+                  <LogIn className="mr-2 h-4 w-4" />
+                  Sign In
+                </>
+              )}
+            </Link>
+          </Button>
         </nav>
 
         <Sheet>
@@ -41,16 +56,33 @@ export function Header() {
           </SheetTrigger>
 
           <SheetContent side="right" className="px-6 py-12">
-            {navItems.map((item) => (
-              <SheetClose asChild key={item.href}>
-                <Link
-                  href={item.href}
-                  className="py-2 text-base font-medium text-gray-800"
-                >
-                  {item.label}
-                </Link>
+            <nav className="flex flex-col gap-4">
+              {navItems.map((item) => (
+                <SheetClose asChild key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="py-2 text-base font-medium text-gray-800 hover:text-sky-800"
+                  >
+                    {item.label}
+                  </Link>
+                </SheetClose>
+              ))}
+
+              <SheetClose asChild>
+                <Button asChild className="mt-4">
+                  <Link href={session ? "/dashboard" : "/login"}>
+                    {session ? (
+                      "Dashboard"
+                    ) : (
+                      <>
+                        <LogIn className="mr-2 h-4 w-4" />
+                        Sign In
+                      </>
+                    )}
+                  </Link>
+                </Button>
               </SheetClose>
-            ))}
+            </nav>
           </SheetContent>
         </Sheet>
       </div>
