@@ -3,7 +3,7 @@ import { Button } from "../ui/button";
 
 export function Hero() {
   return (
-    <section className="bg-white pt-24">
+    <section className="bg-white pt-24 pb-14 md:pb-0">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-center md:flex-row">
           <article className="max-w-xl">
@@ -21,7 +21,7 @@ export function Hero() {
 
               <Button
                 variant="outline"
-                className="cursor-pointer hover:bg-gray-100"
+                className="cursor-pointer"
               >
                 Join as a professional
               </Button>
