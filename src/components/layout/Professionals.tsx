@@ -1,13 +1,5 @@
-import {
-  Card,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import Image from "next/image";
-import { Button } from "../ui/button";
-import Link from "next/link";
+import { practitioners } from "@/data/practitioners";
+import { ProfessionalCard } from "./ProfessionalCard";
 
 export function Professionals() {
   return (
@@ -18,30 +10,9 @@ export function Professionals() {
         </h2>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <Card className="overflow-hidden">
-            <div className="relative h-48">
-              <Image
-                fill
-                src="/professionalImg.png"
-                alt="Professional photo"
-                className="object-contain"
-              />
-            </div>
-
-            <CardHeader>
-              <CardTitle>Dr. Amanda Silva</CardTitle>
-              <CardDescription>Gynecologist</CardDescription>
-            </CardHeader>
-            <CardFooter>
-              <Button
-                asChild
-                variant={"outline"}
-                className="w-full cursor-pointer"
-              >
-                <Link href="/professional/1">Schedule consultation</Link>
-              </Button>
-            </CardFooter>
-          </Card>
+          {practitioners.map((p) => (
+            <ProfessionalCard key={p.id} professional={p} />
+          ))}
         </div>
       </div>
     </section>
