@@ -1,6 +1,6 @@
 export default function Dashboard() {
   return (
-    <div className="pt-16">
+    <div>
       <h1>Dashboard Page</h1>
     </div>
   );
